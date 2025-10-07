@@ -1,7 +1,7 @@
 import os
 import platform
 
-opcoes_menu = ["Adicionar tarefas", "Exibir tarefas", "Remover tarefas"]
+opcoes_menu = ["Adicionar tarefas", "Exibir tarefas", "Remover tarefas", "Sair do sistema"]
 lista_de_tarefas = []
 
 def menu_principal(): # alterar nome da função 
@@ -26,6 +26,11 @@ def limpar_tela():
         os.system("cls")
     else:
         os.system("clear")
+
+def encerrar_sistema():
+    limpar_tela()
+    print("\nEncerrando sistema...")
+    exit()
 
 def exibir_lista_tarefas():
     for i, tarefa in enumerate(lista_de_tarefas, start=1):
@@ -108,4 +113,4 @@ while True:
     elif resposta == 3:
         remover_tarefas()
     else:
-        print("Encerrando Sistema")
+        encerrar_sistema()
