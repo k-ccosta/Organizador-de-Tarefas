@@ -31,6 +31,10 @@ def exibir_lista_tarefas():
     for i, tarefa in enumerate(lista_de_tarefas, start=1):
         print(f"{[i]} | {(tarefa['titulo_tarefa'].capitalize()).ljust(45)} | Status: {'Concluída' if tarefa['status'] else 'Pendente'}")
 
+def retornar_menu():
+    input("\nPressione ENTER para retornar ao menu principal...")
+    limpar_tela()
+
 def adicionar_tarefa():
     limpar_tela()
 
@@ -50,9 +54,7 @@ def adicionar_tarefa():
 
     lista_de_tarefas.append(tarefa)
 
-    # temporário
-
-    limpar_tela()
+    retornar_menu()
 
 def listar_tarefas():
     limpar_tela()
@@ -66,9 +68,7 @@ def listar_tarefas():
 
     exibir_lista_tarefas()
 
-    # temporário
-
-    # limpar_tela()
+    retornar_menu()
 
 def remover_tarefas():
     limpar_tela()
@@ -89,6 +89,8 @@ def remover_tarefas():
     lista_de_tarefas.pop(indice_tarefa)
 
     print("Tarefa removida com sucesso!")
+
+    retornar_menu()
 
 while True:
     menu_principal()
