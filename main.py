@@ -54,6 +54,8 @@ def adicionar_tarefa():
 
     lista_de_tarefas.append(tarefa)
 
+    print("\nTarefa adicionada com sucesso!")
+
     retornar_menu()
 
 def listar_tarefas():
