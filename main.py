@@ -27,6 +27,10 @@ def limpar_tela():
     else:
         os.system("clear")
 
+def exibir_lista_tarefas():
+    for i, tarefa in enumerate(lista_de_tarefas, start=1):
+        print(f"{[i]} | {(tarefa['titulo_tarefa'].capitalize()).ljust(45)} | Status: {'Concluída' if tarefa['status'] else 'Pendente'}")
+
 def adicionar_tarefa():
     limpar_tela()
 
@@ -60,8 +64,7 @@ def listar_tarefas():
     print(titulo)
     print(f"{borda}\n\n")
 
-    for i, tarefa in enumerate(lista_de_tarefas, start=1):
-        print(f"{[i]} - {tarefa}")
+    exibir_lista_tarefas()
 
     # temporário
 
@@ -77,8 +80,7 @@ def remover_tarefas():
     print(titulo)
     print(f"{borda}\n\n")
 
-    for i, tarefa in enumerate(lista_de_tarefas, start=1):
-        print(f"{[i]} - {tarefa}")
+    exibir_lista_tarefas()
 
     indice_tarefa = int(input("\nQual tarefa você quer remover? "))
 
