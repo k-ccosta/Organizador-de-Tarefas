@@ -17,7 +17,16 @@ def listar_menu_principal():
         print(f"{[i]} - {opcao}")
 
 def selecionar_opcao_menu():
-    opcao_selecionada = int(input("\n O que deseja fazer? "))
+    while True:
+        try:
+            opcoes_selecionada = int(input("\nO que deseja fazer? "))
+            if 1 <= opcoes_selecionada <= len(opcoes_menu):
+                opcao_selecionada = opcoes_selecionada
+                break
+            else:
+                print("\nOpção inválida. Por favor, selecione uma opção válida.")
+        except ValueError:
+            print("\nOpção inválida. Por favor, selecione uma opção válida.")
     return opcao_selecionada
 
 def limpar_tela():
