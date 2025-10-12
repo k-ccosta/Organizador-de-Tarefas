@@ -42,8 +42,14 @@ def encerrar_sistema():
     exit()
 
 def exibir_lista_tarefas():
-    for i, tarefa in enumerate(lista_de_tarefas, start=1):
-        print(f"{[i]} | {(tarefa['titulo_tarefa'].capitalize()).ljust(45)} | Status: {'Concluída' if tarefa['status'] else 'Pendente'}")
+    if not lista_de_tarefas:
+        print("Nenhuma tarefa cadastrada.")
+        # return
+    else:
+        print(f"{'ID'.ljust(3)} | {'Título da tarefa'.ljust(45)} | Status")
+        print("-" * 75)
+        for i, tarefa in enumerate(lista_de_tarefas, start=1):
+            print(f"{[i]} | {(tarefa['titulo_tarefa'].capitalize()).ljust(45)} | Status: {'Concluída' if tarefa['status'] else 'Pendente'}")
 
 def retornar_menu():
     input("\nPressione ENTER para retornar ao menu principal...")
@@ -104,7 +110,7 @@ def remover_tarefas():
 
     lista_de_tarefas.pop(indice_tarefa)
 
-    print("Tarefa removida com sucesso!")
+    print("\nTarefa removida com sucesso!")
 
     retornar_menu()
 
