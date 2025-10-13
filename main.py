@@ -46,16 +46,18 @@ def exibir_lista_tarefas():
         print("Nenhuma tarefa cadastrada.")
         # return
     else:
-        print(f"{'ID'.ljust(3)} | {'Título da tarefa'.ljust(45)} | Status")
+        print(f"{'ID'.ljust(3)} | {'Título da tarefa'.ljust(45)} | {'Status'.ljust(16)} | Prioridade")
         print("-" * 75)
         for i, tarefa in enumerate(lista_de_tarefas, start=1):
-            print(f"{[i]} | {(tarefa['titulo_tarefa'].capitalize()).ljust(45)} | Status: {'Concluída' if tarefa['status'] else 'Pendente'}")
+            print(f"[{i}] | {(tarefa['titulo_tarefa'].capitalize()).ljust(45)} | Status: {'Concluída'.ljust(8) if tarefa['status'] else 'Pendente'.ljust(8)} | Prioridade: {tarefa['prioridade']}")
 
 def retornar_menu():
     input("\nPressione ENTER para retornar ao menu principal...")
     limpar_tela()
 
 def adicionar_tarefa():
+    nivel_prioridade = ["Baixa", "Média", "Alta"]
+
     limpar_tela()
 
     titulo = "Adicionando tarefas"
@@ -67,9 +69,31 @@ def adicionar_tarefa():
 
     titulo_tarefa = input("Título tarefa: ")
 
+    for i, prioridade in enumerate(nivel_prioridade, start=1):
+        print("")
+        print(f"{[i]} - {prioridade}")
+
+    while True:
+        try:
+            prioridade_selecionada = int(input("\nNível de prioridade (1-3): "))
+            if 1 <= prioridade_selecionada <= 3:
+                break
+            else:
+                print("\nOpção inválida. Por favor, selecione uma opção válida.")
+        except ValueError:
+            print("\nOpção inválida. Por favor, selecione uma opção válida.")
+
+    if prioridade_selecionada == 1:
+        prioridade = nivel_prioridade[0]
+    elif prioridade_selecionada == 2:
+        prioridade = nivel_prioridade[1]
+    else:
+        prioridade = nivel_prioridade[2]
+
     tarefa = {
         "titulo_tarefa":titulo_tarefa,
-        "status":False
+        "status":False,
+        "prioridade":prioridade
     }
 
     lista_de_tarefas.append(tarefa)
